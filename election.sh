@@ -3,8 +3,8 @@
 # Exit immediately if a command exits with a non-zero status
 set -e
 
-# Get the absolute path of the folder this script is in
-project_path = $(cd "$(dirname "$0")" && pwd)
+# CHANGE THIS to the absolute path of the folder this script is in
+project_path="/home/mate/Programozas/_Projects_/CaptchaLogin"
 
 # Navigate to the project directory
 cd $project_path

@@ -11,6 +11,7 @@ This is a simple CLI application that allows a user to login to [Catalog](https:
 ## Installation
 - Clone the repository
 - Based on `.env.example` create a `.env` file and fill in the required fields
+- Change `project_path` in `catalog.sh` and `election.sh` files
 - Run `chmod +x copy_script.sh` to make the script executable
 - Run `./copy_script.sh`
 
