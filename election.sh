@@ -11,10 +11,12 @@ cd $project_path
 
 # Activate the virtual environment if it exists, otherwise create it first
 if [ ! -d "env" ]; then
-    python -m venv env
-    source env/bin/activate
-    pip install --upgrade pip
-    pip install -r requirements.txt
+    echo "Creating virtual environment..."
+    python -m venv env > /dev/null 2>&1
+    source env/bin/activate > /dev/null 2>&1
+    pip install --upgrade pip > /dev/null 2>&1
+    pip install -r requirements.txt > /dev/null 2>&1
+    echo "Virtual environment created."
 else
     source env/bin/activate
 fi
