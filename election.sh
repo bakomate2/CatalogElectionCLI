@@ -1,14 +1,15 @@
 #!/bin/bash
-# If you are on linux I recommend copying this file to /usr/local/bin/ and renaming it to election
-# sudo cp election.sh /usr/local/bin/election
 
 # Exit immediately if a command exits with a non-zero status
 set -e
 
-# Navigate to the project directory (change this to the path of election.py)
-cd /home/mate/Programozas/_Projects_/CaptchaLogin/cli
+# Get the absolute path of the folder this script is in
+project_path = $(cd "$(dirname "$0")" && pwd)
 
-# Check if the 'env' directory exists
+# Navigate to the project directory
+cd $project_path
+
+# Activate the virtual environment if it exists, otherwise create it first
 if [ ! -d "env" ]; then
     python -m venv env
     source env/bin/activate

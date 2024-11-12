@@ -20,11 +20,11 @@ login_url = "https://catalog.inf.elte.hu/Account/Login"
 # Create a session to persist cookies
 session = requests.Session()
 
-# Get the login page to retrieve any necessary cookies or tokens
+# Get the login page to retrieve __AntiXsrfToken cookie
 response = session.get(login_url)
 soup = BeautifulSoup(response.text, 'html.parser')
 
-# Extract any hidden form fields (if necessary)
+# Extract hidden form fields
 hidden_fields = {}
 for input_tag in soup.find_all('input', type='hidden'):
     hidden_fields[input_tag['name']] = input_tag['value']
