@@ -16,13 +16,16 @@ fn main() {
         eprintln!("Usage: election <captcha_code>");
         process::exit(1);
     }
-    let captcha_code = &args[1];
+    let captcha_code = &args[1].to_uppercase();
 
     // URL of the login page
     let login_url = "https://election.inf.elte.hu/Account/Login";
 
     // Create a client to persist cookies
-    let client = Client::new();
+    let client = Client::builder()
+        .cookie_store(true)
+        .build()
+        .expect("Failed to create reqwest client");
 
     // Get the login page to retrieve __AntiXsrfToken cookie
     let response = client.get(login_url).send().expect("Failed to get login page");
@@ -56,10 +59,9 @@ fn main() {
 
     // Check if login was successful
     if response.url().as_str() == "https://election.inf.elte.hu/Student/student" {
-        println!("\x1b[92mLogin successful to Election!\x1b[0m");
         let document = Document::from_read(response).expect("Failed to parse student page");
         if let Some(selected_option) = document.find(Name("option")).find(|n| n.attr("selected").is_some()) {
-            println!("\x1b[93m{}\x1b[0m", selected_option.text());
+            println!("\x1b[92mLogin successful to Election ({})!\x1b[0m", selected_option.text());
         }
     } else {
         println!("\x1b[91mLogin failed to Election!\x1b[0m");

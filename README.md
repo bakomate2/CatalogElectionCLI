@@ -16,6 +16,6 @@ This is a simple CLI application that allows a user to login to [Catalog](https:
 - Add these executables to your PATH so you can run them from anywhere in the terminal (optional)
 
 ## Usage
-You can run the following commands from anywhere in the terminal:
+You can run the following commands from the terminal:
 - `catalog <captcha_code>` to login to Catalog
 - `election <captcha_code>` to login to Election
