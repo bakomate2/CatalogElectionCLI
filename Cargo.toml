@@ -1,0 +1,22 @@
+[package]
+name = "catalog_election_cli"
+version = "0.1.0"
+authors = ["Bakonyi Máté <matebakonyi03@gmail.com>"]
+edition = "2021"
+default-run = "catalog"
+
+[[bin]]
+name = "catalog"
+path = "src/bin/catalog.rs"
+
+[[bin]]
+name = "election"
+path = "src/bin/election.rs"
+
+[dependencies]
+reqwest = { version = "0.12.9", features = ["blocking", "json"] }
+select = "0.6"
+dotenv = "0.15"
+dotenv_codegen = "0.15"
+
+[build-dependencies]
