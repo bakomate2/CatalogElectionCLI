@@ -57,7 +57,7 @@ fn main() {
         .send()
         .expect("Failed to send login request");
 
-    // Check if login was successful
+    // Check if the login was successful
     if response.url().as_str() == "https://election.inf.elte.hu/Student/student" {
         let document = Document::from_read(response).expect("Failed to parse student page");
         if let Some(selected_option) = document.find(Name("option")).find(|n| n.attr("selected").is_some()) {
